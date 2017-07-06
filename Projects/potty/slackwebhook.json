@@ -1,0 +1,11 @@
+{
+    "event": "slackbutton",
+    "url": "https://hooks.slack.com/services/SLACKWEBHOOKURL_HERE",
+    "requestType": "POST",
+    "json": {
+        "username": "P0ttyTim3",
+        "icon_emoji": ":poop:",
+        "text": "{{SPARK_EVENT_VALUE}}"
+    },
+    "mydevices": "true"
+}
