@@ -16,3 +16,36 @@ the `firmware/user/applications` folder is soft-linked to `/home/vagrant/src/fir
 
 [Adafruit-LED-Backpack-Library](https://github.com/pkourany/Adafruit-LED-Backpack-Library)
 [I2C LCD](https://community.particle.io/t/lcd-i2c-lib-info-customcharacters/4670)
+
+### Some neat things
+
+To create a (webhook)[https://api.slack.com/incoming-webhooks] integration for Slack:
+
+Create a json file 
+```
+{
+    "event": "slackbutton",
+    "url": "https://hooks.slack.com/services/((AWESOME WEBHOOK URL))",
+    "requestType": "POST",
+    "json": {
+        "username": "Pottytrain",
+        "icon_emoji": ":poop:",
+        "text": "{{SPARK_EVENT_VALUE}}"
+    },
+    "mydevices": "true"
+}
+```
+
+
+Create a slackwebhook.json
+
+`particle webhook create slackwebhook.json`
+
+
+And now, in your code, to call this event, simply do:
+
+```
+Spark.publish("slackbutton", slackstring,60,PRIVATE);
+```
+
+Since spark always connect to its server, this will trigger the webhook ;)
